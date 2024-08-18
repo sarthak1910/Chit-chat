@@ -1,28 +1,29 @@
 // server.js
-const express = require('express');
-const cors = require('cors');
-const http = require('http');
-const socketIo = require('socket.io');
+const express = require("express");
+const cors = require("cors");
+const http = require("http");
+const socketIo = require("socket.io");
 
 // Initialize the express app
 const app = express();
 
 // Middleware
 app.use(cors());
-app.use(express.static('public')); // Serve static files
+app.use(express.static("public")); // Serve static files
 
 // Create an HTTP server
 const server = http.createServer(app);
 const allowedOrigins = [
-  'http://localhost:8000/', // Local development
-  process.env.RENDER_EXTERNAL_URL // Render deployment URL
+  "*",
+  "http://localhost:8000/", // Local development
+  process.env.RENDER_EXTERNAL_URL, // Render deployment URL
 ];
 // Initialize socket.io with CORS configuration
 const io = socketIo(server, {
   cors: {
     origin: "allowedOrigins",
-    methods: ["GET", "POST"]
-  }
+    methods: ["GET", "POST"],
+  },
 });
 
 const users = {};
