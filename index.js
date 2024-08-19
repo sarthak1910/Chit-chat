@@ -21,7 +21,7 @@ const allowedOrigins = [
 // Initialize socket.io with CORS configuration
 const io = socketIo(server, {
   cors: {
-    origin: "allowedOrigins",
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
   },
 });
