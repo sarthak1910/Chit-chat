@@ -1,28 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chit-Chat</title>
-    <script defer src="http://localhost:8000/socket.io/socket.io.js"></script>
-    <script  defer src="client.js"></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <nav>
-      <img class="logo" src="messaging.png" alt="" />
-      <h1>Welcome to Chit-Chat App</h1>
-     
-    </nav>
-    <div class="container">
-      <!-- <div class="message right">Sarthak:Hey how are You?</div>
-      <div class="message left">Hemani:I am fine.How about You?</div> -->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="./style.css" />
+  <title>Chit Chat</title>
+  <style>
+    #nameModal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+    #modalContent {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    #modalContent input {
+      padding: 10px;
+      width: 80%;
+      margin-top: 10px;
+    }
+    #modalContent button {
+      padding: 10px;
+      margin-top: 10px;
+    }
+    h1#app-title {
+      text-align: center;
+      margin-top: 20px;
+      font-family: 'Segoe UI', sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="nameModal">
+    <div id="modalContent">
+      <h3>Enter Your Name to Join</h3>
+      <input type="text" id="nameInput" placeholder="Your name"/>
+      <br/>
+      <button onclick="joinChat()">Join Chat</button>
     </div>
-    <div class="send">
-      <form action="#" id="send-container">
-        <input type="text" name="messageInp" id="messageInp" />
-        <button class="btn" type="submit">send</button>
-      </form>
-    </div>
-  </body>
+  </div>
+
+  <h1 id="app-title">Chit Chat</h1>
+
+  <div class="container">
+  </div>
+
+  <form id="send-container">
+    <input id="messageInp" type="text" placeholder="Type a message" autocomplete="off" />
+    <button type="submit">Send</button>
+  </form>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
 </html>

@@ -14,7 +14,7 @@ app.use(express.static("Public")); // Serve static files
 // Create an HTTP server
 const server = http.createServer(app);
 const allowedOrigins = [
-  "https://chit-chat-ywgp.onrender.com",
+  "https://chit-chat-ywgp.onrender.com/",
   "http://localhost:8000/", // Local development
   process.env.RENDER_EXTERNAL_URL, // Render deployment URL
 ];
